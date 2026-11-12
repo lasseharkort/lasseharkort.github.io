@@ -21,7 +21,7 @@ listing:
 ::: {.profile-text .column-page}
 # About Me [(he/him)]{.pronouns}
 
-I'm a geographer with expertise in remote sensing. My current research focuses methods to distinguish woody plants from grasses in arid to semiarid savannas. I'm also interested in interrogating how we observe landscapes and use environmental data more generally.
+I'm a geographer with expertise in remote sensing. My current research focuses on methods to distinguish woody plants from grasses in arid to semiarid savannas. I'm also interested in interrogating how we observe landscapes and use environmental data more generally.
 :::
 
 ::: {.column-page .two-col-row}
