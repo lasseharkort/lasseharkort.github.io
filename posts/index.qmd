@@ -1,0 +1,27 @@
+---
+title: "News"
+listing:
+  id: all-news
+  contents: .
+  sort: "date desc"
+  type: default
+page-layout: full
+title-block-banner: false
+---
+
+```{=html}
+<style>#title-block-header { display: none; }</style>
+```
+
+::: {.post-nav-top}
+[&larr; Back to Home](/index.html)
+:::
+
+# News
+
+::: {#all-news}
+:::
+
+::: {.post-nav-footer .post-nav-footer-bare}
+[&larr; Back to Home](/index.html)
+:::

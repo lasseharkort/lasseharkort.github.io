@@ -1,0 +1,20 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - "CV/CV.pdf"
+
+website:
+  title: "Lasse Harkort"
+  description: "Geographer & Earth Observation researcher — publications, projects, and writing."
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: false
+    grid:
+      body-width: 900px
+
+execute:
+  freeze: auto

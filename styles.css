@@ -1,0 +1,382 @@
+/* Minimal custom overrides — keep it simple, tweak as you like */
+
+:root {
+  --accent: #8C1515;
+}
+
+a {
+  color: var(--accent);
+}
+a:hover {
+  color: #5c0e0e;
+}
+
+/* Post titles in any news/blog listing (homepage carousel and the "All
+   News" page) - bold instead of the theme's default regular weight */
+.quarto-post .listing-title {
+  font-weight: 700 !important;
+}
+
+/* Footer nav on individual post pages: Home on the left, All News on the
+   right */
+.post-nav-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  margin-bottom: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #dee2e6;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.post-nav-footer a {
+  text-decoration: none;
+}
+
+/* Bottom "Back to Home" link on the All News page: no divider line above
+   it, just breathing room below the last item */
+.post-nav-footer-bare {
+  border-top: none;
+  padding-top: 0;
+}
+
+/* "Back to Home" link above the page title on the All News page */
+.post-nav-top {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.post-nav-top a {
+  text-decoration: none;
+}
+
+/* Homepage hero banner: full-bleed image at the very top of the page. The
+   height is expressed as a vw calc using the source photo's exact ratio
+   (4017x1375), so it always matches the full-bleed image's actual rendered
+   height at any viewport width. */
+:root {
+  --banner-height: calc(100vw * 1375 / 4017);
+}
+
+.home-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.home-banner-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4017 / 1375;
+  object-fit: cover;
+}
+
+/* Soft vignette centered behind the profile block, so the name/text read
+   clearly against the vegetation without flattening the rest of the photo */
+.home-banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse 60% 65% at center, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.3) 45%, rgba(0, 0, 0, 0) 75%);
+  pointer-events: none;
+}
+
+.home-banner-profile {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.home-banner-picture {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.home-banner-name {
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+.home-banner-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.home-banner-affiliation {
+  font-size: 1rem;
+  margin-top: 0.2rem;
+}
+.home-banner-name a {
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+.home-banner-socials {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.home-banner-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+.home-banner-socials a:hover {
+  background-color: rgba(0, 0, 0, 0.65);
+  transform: scale(1.08);
+}
+.home-banner-socials svg {
+  width: 36px;
+  height: 36px;
+}
+
+@media (max-width: 500px) {
+  .home-banner-picture {
+    width: 140px;
+    height: 140px;
+  }
+  .home-banner-title {
+    font-size: 1.3rem;
+  }
+  .home-banner-affiliation {
+    font-size: 0.85rem;
+  }
+  .home-banner-socials a {
+    width: 42px;
+    height: 42px;
+  }
+  .home-banner-socials svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* Push the real page content down to clear the banner (there's no navbar
+   to clear now that it's removed) */
+body.home-about #quarto-content {
+  padding-top: var(--banner-height);
+}
+
+/* News background: the "All News" listing and every individual post page
+   share the same tint as the homepage's News section */
+body.posts-page {
+  background-color: #EDDDC0;
+}
+
+.news-section {
+  margin-top: 3rem;
+  background-color: #EDDDC0;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+/* "All News" page: divider line between each item. The theme's default
+   #dee2e6 border is nearly invisible against the tan page background, so
+   use a darker line here to actually read as a divider. */
+body.posts-page #listing-all-news .quarto-post {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Footer on news pages: match the page background instead of the
+   theme's default white */
+body.posts-page .nav-footer {
+  background-color: #EDDDC0;
+}
+
+/* Homepage intro text block: "About Me" heading + bio - first content
+   section, right below the banner */
+.profile-text {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+.profile-text h1 {
+  margin-bottom: 0.25rem;
+}
+.pronouns {
+  font-size: 0.55em;
+  font-weight: 400;
+  color: #6c757d;
+  margin-left: 0.4rem;
+}
+
+/* Interests / Education: one row, two columns */
+.two-col-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+.two-col {
+  flex: 1 1 280px;
+}
+
+/* "Full CV" button under the Education list - extra margin-top so it reads
+   as a separate action, not just another bullet */
+.cv-button {
+  display: inline-block;
+  margin-top: 1.25rem;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.cv-button:hover {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+.publications-section {
+  margin-top: 3rem;
+}
+
+/* News section header row: title + "All News" link, sharing the same
+   underline the theme normally puts under a lone h2 */
+.news-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.news-header h2 {
+  margin: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.news-all-link {
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+/* Swipe carousel: the 3 latest posts are absolutely stacked in the same
+   spot and cycled through by JS (see the script at the end of index.qmd),
+   which slides the incoming post in from the right while the outgoing one
+   exits to the left. Height is a fixed constant (not sized to content) so
+   the banner never jumps around as posts of different lengths rotate
+   through - text and thumbnail are clamped/cropped to fit it. */
+:root {
+  --news-card-height: 300px;
+}
+.news-carousel-viewport {
+  position: relative;
+  overflow: hidden;
+  height: var(--news-card-height);
+}
+.news-carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--news-card-height);
+  overflow: hidden;
+  margin: 0 !important;
+  padding-bottom: 0 !important;
+  border-bottom: none !important;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+.news-carousel-slide .thumbnail {
+  height: var(--news-card-height);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4f4f4;
+}
+.news-carousel-slide .thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.news-carousel-slide .body {
+  overflow: hidden;
+}
+.news-carousel-slide .listing-title {
+  font-weight: 700 !important;
+  overflow: hidden;
+}
+.news-carousel-slide .listing-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+/* Dots below the carousel: show which of the 3 posts is active; clicking
+   one jumps straight to it and stops the auto-rotation for good */
+.news-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+.news-carousel-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.news-carousel-dot:hover {
+  background-color: rgba(0, 0, 0, 0.45);
+}
+.news-carousel-dot.is-active {
+  background-color: #071013;
+  transform: scale(1.25);
+}
+
+@media (max-width: 700px) {
+  :root {
+    --news-card-height: 340px;
+  }
+  .news-carousel-slide {
+    flex-direction: column;
+  }
+  .news-carousel-slide .thumbnail {
+    height: 160px;
+  }
+}
+
+/* Publications list */
+.publication {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.publication:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}

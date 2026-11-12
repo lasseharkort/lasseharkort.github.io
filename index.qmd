@@ -1,0 +1,181 @@
+---
+pagetitle: "Lasse Harkort"
+page-layout: full
+body-classes: "home-about"
+format:
+  html:
+    include-before-body: _banner-include.html
+listing:
+  id: latest-news
+  contents: "posts/*/index.qmd"
+  sort: "date desc"
+  max-items: 3
+  type: default
+  fields: [image, title, date, description]
+---
+
+```{=html}
+<style>#title-block-header { display: none; }</style>
+```
+
+::: {.profile-text .column-page}
+# About Me [(he/him)]{.pronouns}
+
+I'm a geographer with expertise in remote sensing. My current research focuses methods to distinguish woody plants from grasses in arid to semiarid savannas. I'm also interested in interrogating how we observe landscapes and use environmental data more generally.
+:::
+
+::: {.column-page .two-col-row}
+
+::: {.two-col}
+## Interests
+
+- Earth Observation
+- Geospatial Data
+- Data Justice
+- Outdoor Activities
+:::
+
+::: {.two-col}
+## Academia
+
+- **Ph.D. Candidate**, Earth Observation — Humboldt University Berlin *(2022–)*
+- **M.Sc.**, Geomatics — Lund University *(2020–2022)*
+- **B.Sc.**, Geography — Humboldt University Berlin *(2016–2020)*
+
+```{=html}
+<a href="CV/CV.pdf" target="_blank" rel="noopener" class="cv-button">Full CV</a>
+```
+:::
+
+:::
+
+::: {.column-screen .news-section}
+
+::: {.column-page}
+```{=html}
+<div class="news-header">
+  <h2>News</h2>
+  <a href="posts/index.html" class="news-all-link">All News →</a>
+</div>
+```
+
+::: {#latest-news}
+:::
+:::
+
+:::
+
+```{=html}
+<script>
+(function () {
+  function initNewsCarousel() {
+    var listingEl = document.getElementById("listing-latest-news");
+    if (!listingEl) return;
+    var viewport = listingEl.querySelector(".list.quarto-listing-default");
+    if (!viewport) return;
+    var slides = Array.prototype.slice.call(viewport.children).filter(function (el) {
+      return el.classList.contains("quarto-post");
+    });
+    if (slides.length <= 1) return;
+
+    viewport.classList.add("news-carousel-viewport");
+    slides.forEach(function (slide) { slide.classList.add("news-carousel-slide"); });
+
+    var active = 0;
+    var count = slides.length;
+    var ROTATE_MS = 6000;
+    var TRANSITION_MS = 600;
+    var timer = null;
+    var animating = false;
+    var userTookControl = false;
+
+    // Dots: one per slide, showing which is active; clicking one jumps
+    // straight to that slide and permanently stops the auto-rotation.
+    var dotsWrap = document.createElement("div");
+    dotsWrap.className = "news-carousel-dots";
+    var dots = slides.map(function (_, i) {
+      var dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "news-carousel-dot";
+      dot.setAttribute("aria-label", "Show news item " + (i + 1));
+      dot.addEventListener("click", function () {
+        if (!userTookControl) {
+          userTookControl = true;
+          if (timer) clearInterval(timer);
+        }
+        goTo(i);
+      });
+      dotsWrap.appendChild(dot);
+      return dot;
+    });
+    listingEl.insertAdjacentElement("afterend", dotsWrap);
+
+    function updateDots() {
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle("is-active", i === active);
+      });
+    }
+
+    function placeInstant(slide, x) {
+      slide.style.transition = "none";
+      slide.style.transform = "translateX(" + x + ")";
+      void slide.offsetHeight;
+      slide.style.transition = "";
+    }
+
+    slides.forEach(function (slide, i) {
+      if (i === active) {
+        slide.style.opacity = "1";
+        slide.style.zIndex = "2";
+        placeInstant(slide, "0");
+      } else {
+        slide.style.opacity = "0";
+        slide.style.zIndex = "1";
+        placeInstant(slide, "100%");
+      }
+    });
+    updateDots();
+
+    function goTo(index) {
+      if (index === active || animating) return;
+      animating = true;
+
+      var outgoing = slides[active];
+      active = index;
+      var incoming = slides[active];
+
+      outgoing.style.zIndex = "1";
+      outgoing.style.opacity = "0";
+      outgoing.style.transform = "translateX(-100%)";
+
+      incoming.style.zIndex = "2";
+      incoming.style.opacity = "1";
+      incoming.style.transform = "translateX(0)";
+
+      updateDots();
+
+      setTimeout(function () {
+        placeInstant(outgoing, "100%");
+        animating = false;
+      }, TRANSITION_MS + 50);
+    }
+
+    timer = setInterval(function () { goTo((active + 1) % count); }, ROTATE_MS);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initNewsCarousel);
+  } else {
+    initNewsCarousel();
+  }
+})();
+</script>
+```
+
+::: {.column-page .publications-section}
+
+## Publications
+
+{{< include _publications-list.qmd >}}
+
+:::

@@ -1,0 +1,17 @@
+# Quarto build output (published to the gh-pages branch by `quarto publish gh-pages`)
+/_site/
+/.quarto/
+**/*.quarto_ipynb
+
+# LaTeX build files
+CV/*.aux
+CV/*.log
+CV/*.out
+
+# macOS
+.DS_Store
+
+# Only the images the site actually uses (originals stay local)
+/images/*
+!/images/banner.jpg
+!/images/profile_new.jpg

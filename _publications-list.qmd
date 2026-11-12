@@ -1,0 +1,26 @@
+::: {.publication}
+**Mapping fractional vegetation cover in Sub-Saharan rangelands using phenological feature spaces**
+
+L. Harkort, A. Okujeni, V. Amputu, J. Mahler, L. Nill, D. Pflugmacher, A. Röder, P. Hostert
+
+*Remote Sensing of Environment* 319, 114646 (2025)
+[DOI: 10.1016/j.rse.2025.114646](https://doi.org/10.1016/j.rse.2025.114646)
+:::
+
+::: {.publication}
+**Estimation of dissolved organic carbon from inland waters at a large scale using satellite data and machine learning methods**
+
+L. Harkort, Z. Duan
+
+*Water Research* 229, 119478 (2023)
+[DOI: 10.1016/j.watres.2022.119478](https://doi.org/10.1016/j.watres.2022.119478)
+:::
+
+::: {.publication}
+**Spatiotemporal Patterns of Cyclist Collisions in Germany: Variations in Frequency, Severity of Injury, and Type of Collision in 2019**
+
+L. Harkort, B.B. Walker, T. Lakes
+
+*Applied Spatial Analysis* 16, 209–228 (2023)
+[DOI: 10.1007/s12061-022-09476-w](https://doi.org/10.1007/s12061-022-09476-w)
+:::

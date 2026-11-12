@@ -1,0 +1,6 @@
+---
+title: "Publications"
+subtitle: "See my [Google Scholar](https://scholar.google.com/citations?user=SgrcWCkAAAAJ&hl=de) for the latest list"
+---
+
+{{< include _publications-list.qmd >}}
